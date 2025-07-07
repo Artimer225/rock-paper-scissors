@@ -24,8 +24,24 @@
         }
 
         function playRound(humanChoice, computerChoice) {
-
+            humanChoice = getHumanChoice()
+            humanChoice = humanChoice.toLowerCase()
+            computerChoice = getComputerChoice()
+            const humanWin = 'Player wins!'
+            if (humanChoice === 'rock' && computerChoice === 'scissors') {
+                return humanWin
+            } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
+                return humanWin
+            } else if (humanChoice === 'paper' && computerChoice === 'rock') {
+                return humanWin
+            } else {
+                console.log(humanChoice)
+                console.log(computerChoice)
+                return 'Computer wins!'
+            }
         }
+
+        console.log(playRound());
     </script>
 </body>
 </html>
