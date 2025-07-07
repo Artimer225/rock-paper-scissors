@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <script>
+        let humanScore = 0;
+        let computerScore = 0;
+        function getComputerChoice() {
+            const randomChoice = Math.random();
+            if (randomChoice <= 0.3) {
+                return 'rock'
+            } else if (randomChoice > 0.3 && randomChoice <= 0.6) {
+                return 'paper'
+            } else {
+                return 'scissors'
+            }
+        }
+
+        function getHumanChoice() {
+            return prompt()
+        }
+
+        function playRound(humanChoice, computerChoice) {
+
+        }
+    </script>
+</body>
+</html>
