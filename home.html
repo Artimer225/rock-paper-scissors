@@ -27,7 +27,8 @@
             humanChoice = getHumanChoice()
             humanChoice = humanChoice.toLowerCase()
             computerChoice = getComputerChoice()
-            const humanWin = 'Player wins!'
+            const humanWin = `Player wins! ${humanChoice} beats ${computerChoice}`
+            const computerWin = `Computer wins! ${computerChoice} beats ${humanChoice}`
             if (humanChoice === 'rock' && computerChoice === 'scissors') {
                 return humanWin
             } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
@@ -35,13 +36,30 @@
             } else if (humanChoice === 'paper' && computerChoice === 'rock') {
                 return humanWin
             } else {
-                console.log(humanChoice)
-                console.log(computerChoice)
-                return 'Computer wins!'
+                return computerWin
             }
         }
 
-        console.log(playRound());
+        function playGame() {
+            let humanScore = 0;
+            let computerScore = 0;
+            for (let i = 1; i <= 5; i++) {
+                let winMessage = playRound();
+                console.log(winMessage);
+                if (winMessage.match('Player')) {
+                    humanScore++
+                } else {
+                    computerScore++
+                }
+            }
+            if (humanScore > computerScore) {
+                return console.log(`Player wins the game with score ${humanScore}:${computerScore}`)
+            } else {
+                return console.log(`Computer wins the game with score ${computerScore}:${humanScore}`)
+            }
+        }
+
+        playGame()
     </script>
 </body>
 </html>
