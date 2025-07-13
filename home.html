@@ -12,7 +12,7 @@
     <div>
         <button id="start">Press me</button>
     </div>
-    <div style="justify-content: center; align-items: center; gap: 15px; display: flex" class="symbols">
+    <div id="symbols" style="justify-content: center; align-items: center; gap: 15px; display: none" >
         <button id="rock">Rock</button>
         <button id="scissors">Scissors</button>
         <button id="paper">Paper</button>
@@ -64,8 +64,14 @@
             }
         }
 
+        const symbols = document.querySelector('#symbols');
+
         const startBtn = document.querySelector('#start');
-        startBtn.addEventListener('click', () => startBtn.hidden = true);
+        startBtn.addEventListener('click', function() {
+            symbols.style.display = 'flex';
+            startBtn.hidden = true;
+        });
+
 
 
 
