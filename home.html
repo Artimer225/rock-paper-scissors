@@ -5,9 +5,28 @@
     <title>Home</title>
 </head>
 <body>
+<div class="content" style="display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 15px;">
+    <div style="justify-content: center; align-items: center; display: flex">
+        <p>It's time to play THE GAME! It will last up to 5 rounds. Press the button to start!</p>
+    </div>
+    <div>
+        <button id="start">Press me</button>
+    </div>
+    <div style="justify-content: center; align-items: center; gap: 15px; display: flex" class="symbols">
+        <button id="rock">Rock</button>
+        <button id="scissors">Scissors</button>
+        <button id="paper">Paper</button>
+    </div>
+    <div id="results">
+
+    </div>
+</div>
+
+
     <script>
         let humanScore = 0;
         let computerScore = 0;
+        let roundCount = 0;
         function getComputerChoice() {
             const randomChoice = Math.random();
             if (randomChoice <= 0.3) {
@@ -19,47 +38,69 @@
             }
         }
 
-        function getHumanChoice() {
-            return prompt()
-        }
-
         function playRound(humanChoice, computerChoice) {
-            humanChoice = getHumanChoice()
-            humanChoice = humanChoice.toLowerCase()
             computerChoice = getComputerChoice()
-            const humanWin = `Player wins! ${humanChoice} beats ${computerChoice}`
-            const computerWin = `Computer wins! ${computerChoice} beats ${humanChoice}`
+            const humanWin = `Player wins! ${humanChoice} beats ${computerChoice}.\n
+            Current score is ${humanScore} for player and ${computerScore} for computer.`
+            const computerWin = `Computer wins! ${computerChoice} beats ${humanChoice}\n
+            Current score is ${humanScore} for player and ${computerScore} for computer.`
+            // if (roundCount === 5) {
+            //     if (humanScore > computerScore) {
+            //         humanScore = computerScore = 0;
+            //         return console.log(`Player wins the game with score ${humanScore}:${computerScore}`)
+            //     } else {
+            //         humanScore = computerScore = 0;
+            //         return console.log(`Computer wins the game with score ${computerScore}:${humanScore}`)
+            //     }
+            // }
             if (humanChoice === 'rock' && computerChoice === 'scissors') {
-                return humanWin
+                return console.log(humanWin)
             } else if (humanChoice === 'scissors' && computerChoice === 'paper') {
-                return humanWin
+                return console.log(humanWin)
             } else if (humanChoice === 'paper' && computerChoice === 'rock') {
-                return humanWin
+                return console.log(humanWin)
             } else {
-                return computerWin
+                return console.log(computerWin)
             }
         }
 
-        function playGame() {
-            let humanScore = 0;
-            let computerScore = 0;
-            for (let i = 1; i <= 5; i++) {
-                let winMessage = playRound();
-                console.log(winMessage);
-                if (winMessage.match('Player')) {
-                    humanScore++
-                } else {
-                    computerScore++
-                }
-            }
-            if (humanScore > computerScore) {
-                return console.log(`Player wins the game with score ${humanScore}:${computerScore}`)
-            } else {
-                return console.log(`Computer wins the game with score ${computerScore}:${humanScore}`)
-            }
-        }
+        const startBtn = document.querySelector('#start');
+        startBtn.addEventListener('click', () => startBtn.hidden = true);
 
-        playGame()
+
+
+        const rockBtn = document.querySelector('#rock');
+        rockBtn.addEventListener('click', () => playRound('rock'));
+
+        const scissorsBtn = document.querySelector('#scissors');
+        scissorsBtn.addEventListener('click', () => playRound(btnScissors.id));
+
+        const paperBtn = document.querySelector('#paper');
+        paperBtn.addEventListener('click', () => playRound('paper'));
+
+
+        // function playGame() {
+        //     let humanScore = 0;
+        //     let computerScore = 0;
+        //     for (let i = 1; i <= 5; i++) {
+        //         let winMessage = playRound();
+        //         console.log(winMessage);
+        //         if (winMessage.match('Player')) {
+        //             humanScore++
+        //         } else {
+        //             computerScore++
+        //         }
+        //     }
+        //     if (humanScore > computerScore) {
+        //         return console.log(`Player wins the game with score ${humanScore}:${computerScore}`)
+        //     } else {
+        //         return console.log(`Computer wins the game with score ${computerScore}:${humanScore}`)
+        //     }
+        // }
+
+        // playGame()
+
+
     </script>
 </body>
 </html>
