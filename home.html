@@ -20,6 +20,10 @@
     <div>
         <ul id="results">Your results: </ul>
     </div>
+
+    <div>
+        <button id="restart">Play Again</button>
+    </div>
 </div>
 
 
@@ -86,21 +90,13 @@
         let humanScore = 0;
         let computerScore = 0;
         function playGame(symbol) {
-            // for (let i = 1; i <= 5; i++) {
-            //     let winMessage = playRound(symbol);
-            //     if (winMessage.match('Player')) {
-            //         humanScore++
-            //     } else {
-            //         computerScore++
-            //     }
-            // }
-            // while (humanScore < 5 || computerScore < 5) {
-            // }
-            if (humanScore > computerScore) {
-                return console.log(`Player wins the game with score ${humanScore}:${computerScore}`)
-            } else {
-                return console.log(`Computer wins the game with score ${computerScore}:${humanScore}`)
-            }
+            playRound(symbol)
+                if (humanScore > 4) {
+                    console.log(humanScore)
+                    results.appendChild(document.createElement('h1')).innerText = 'PLAYER WINS THE GAME!'
+                } else if (computerScore > 4){
+                    results.appendChild(document.createElement('h1')).innerText = 'COMPUTER WINS THE GAME!'
+                }
         }
 
     </script>
