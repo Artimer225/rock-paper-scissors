@@ -17,12 +17,12 @@
         <button id="scissors">Scissors</button>
         <button id="paper">Paper</button>
     </div>
-    <div>
+    <div style="justify-content: center; align-items: center; display: flex; padding: 0">
         <ul id="results">Your results: </ul>
     </div>
 
     <div>
-        <button id="restart">Play Again</button>
+        <button id="restart" style="display: none">Play Again</button>
     </div>
 </div>
 
@@ -86,6 +86,14 @@
         const paperBtn = document.querySelector('#paper');
         paperBtn.addEventListener('click', () => playGame(paperBtn.id));
 
+        const restartBtn = document.querySelector('#restart');
+        restartBtn.addEventListener('click', function () {
+            humanScore = 0;
+            computerScore = 0;
+            while (results.firstChild) {
+                results.removeChild(results.lastChild)
+            }
+        })
 
         let humanScore = 0;
         let computerScore = 0;
@@ -94,9 +102,12 @@
                 if (humanScore > 4) {
                     console.log(humanScore)
                     results.appendChild(document.createElement('h1')).innerText = 'PLAYER WINS THE GAME!'
-                } else if (computerScore > 4){
+                    restartBtn.style.display = 'flex';
+                } else if (computerScore > 4) {
                     results.appendChild(document.createElement('h1')).innerText = 'COMPUTER WINS THE GAME!'
+                    restartBtn.style.display = 'flex';
                 }
+
         }
 
     </script>
